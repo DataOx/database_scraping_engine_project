@@ -21,6 +21,7 @@ class GoogleCredentials:
             if creds and creds.expired and creds.refresh_token:
                 creds.refresh(Request())
             else:
+                """code from google guide - credential assertion via redirect page (first time only)"""
                 flow = InstalledAppFlow.from_client_secrets_file('google_api_module/credentials.json', self.SCOPES)
                 creds = flow.run_local_server(port=0)
                 self.create_token(creds)

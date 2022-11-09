@@ -8,7 +8,7 @@ from DAO_module.connection_db import engine, Base
 from DAO_module.models import Person
 
 
-class DaoPostgres:
+class Dao:
 
     def __init__(self):
         session = sessionmaker(engine)
@@ -27,19 +27,19 @@ class DaoPostgres:
             self.session.commit()
 
     def get_non_saved_data(self) -> List[list]:
-        for_google_sheet = []
+        non_saved_data_list = []
         statement = select(Person).filter_by(is_saved=False).order_by(Person.date)
         result = self.session.execute(statement).scalars().all()
         for person in result:
-            for_google_sheet.append([person.date.strftime('%Y/%m/%d'), person.name, person.gender, person.country])
-        return for_google_sheet
+            non_saved_data_list.append([person.date.strftime('%Y/%m/%d'), person.name, person.gender, person.country])
+        return non_saved_data_list
 
     def get_all_data(self) -> List[list]:
-        for_google_sheet = []
+        all_data_list = []
         result = self.session.query(Person)
         for person in result:
-            for_google_sheet.append([person.date.strftime('%Y/%m/%d'), person.name, person.gender, person.country])
-        return for_google_sheet
+            all_data_list.append([person.date.strftime('%Y/%m/%d'), person.name, person.gender, person.country])
+        return all_data_list
 
     def table_is_empty(self):
         if not self.session.query(Person).first():

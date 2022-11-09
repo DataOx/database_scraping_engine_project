@@ -1,6 +1,6 @@
 import logging
 
-from DAO_module.dao_postgres import DaoPostgres
+from DAO_module.dao_postgres import Dao
 from config import URL
 from google_api_module.module_google_api import GoogleAPI
 from parser_module.parser import Parser
@@ -8,11 +8,13 @@ from scraper_module.scraper import Scraper
 
 parser = Parser()
 scraper = Scraper(URL)
-storage = DaoPostgres()
+storage = Dao()
 spreadsheet = GoogleAPI()
 
 
 def application_launch():
+    """This is a temporary solution for test purposes only. In production, I will use celery task"""
+
     if storage.table_is_empty():
         data_list = parser.get_cleaned_data(scraper.all_data)
     else:

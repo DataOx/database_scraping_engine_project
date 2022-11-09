@@ -10,26 +10,26 @@ class Scraper:
     def __init__(self, url_addr):
         self.url_addr = url_addr
         self.regular_expression = [r".*?minute.+", r".*?hour.+", "yesterday"]
+        self.page_counter = 10
 
     @property
     def all_data(self) -> list:
-        counter = 10
         list_data = []
         while True:
-            url_ = self.url_addr.format(str(counter))
+            url_ = self.url_addr.format(str(self.page_counter))
             response = requests.request("GET", url_, headers=HEADERS).json()
             if not response:
                 break
             list_data.extend(response)
-            counter += 10
+            self.page_counter += 10
         return list_data
 
     @property
     def current_data(self) -> list:
-        counter = 10
+        self.page_counter = 10
         list_data = []
         while True:
-            url_ = self.url_addr.format(str(counter))
+            url_ = self.url_addr.format(str(self.page_counter))
             response = requests.request("GET", url_, headers=HEADERS).json()
             if not response:
                 return list_data
@@ -39,7 +39,7 @@ class Scraper:
                         list_data.append(element)
                     else:
                         return list_data
-                counter += 10
+                self.page_counter += 10
 
     def get_recent_date(self, element):
         for match in self.regular_expression:
