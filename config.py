@@ -21,7 +21,7 @@ HEADERS = {
 
 # for google api
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SPREADSHEET_ID = '1JLKGDotCfnqol-ujKvM4XLZ6l8zOtSIdilOveDCCIwg'
+SPREADSHEET_ID = os.environ.get('SPREADSHEET_ID')
 NAME_LIST = "MAIN_LIST"
 CRED_PATH = "google_api_module/credentials.json"
 TOKEN_PATH = 'google_api_module/token.json'

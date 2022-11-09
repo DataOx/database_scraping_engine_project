@@ -33,7 +33,7 @@ class GoogleAPI:
 
     def create_(self):
         spreadsheet_ = self.service.create(body={
-            'properties': {'title': 'TEST'},
+            'properties': {'title': 'TABLE_SUMMER'},
             'sheets': [{'properties': {'sheetType': 'GRID',
                                        'sheetId': 0,
                                        'title': 'MAIN_LIST',
