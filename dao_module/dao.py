@@ -4,8 +4,8 @@ from typing import List
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
 
-from DAO_module.connection_db import engine, Base
-from DAO_module.models import Person
+from dao_module.connection_db import engine, Base
+from dao_module.models import Person
 
 
 class Dao:

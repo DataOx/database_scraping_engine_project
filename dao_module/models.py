@@ -1,6 +1,6 @@
 from sqlalchemy import PrimaryKeyConstraint, Column, Date, String, Boolean
 
-from DAO_module.connection_db import Base
+from dao_module.connection_db import Base
 
 
 class Person(Base):
