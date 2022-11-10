@@ -28,6 +28,7 @@ TOKEN_PATH = 'google_api_module/token.json'
 
 # time for docker and celery
 CURRENT_TIME_ZONE = pytz.timezone("Europe/Kyiv")
+# CURRENT_TIME_ZONE = pytz.timezone("GB")
 
 # postgres connection
 POSTGRES_CONNECTION_STR = 'postgresql://{}:{}@{}:{}/{}'.format(
