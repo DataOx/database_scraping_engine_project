@@ -62,7 +62,3 @@ class Dao:
             dictionary.update(
                 (k, datetime.strptime(v, "%Y/%m/%d").date()) for k, v in dictionary.items() if k == "date")
         return list_of_dictionaries
-
-# if __name__ == "__main__":
-#     a = DaoSql()
-#     print(a.table_is_empty())

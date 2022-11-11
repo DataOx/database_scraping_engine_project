@@ -45,8 +45,3 @@ class Scraper:
         for match in self.regular_expression:
             if re.search(match, element):
                 return True
-
-
-# if __name__ == "__main__":
-#     a = Scraper(URL)
-#     print(a.current_data)
