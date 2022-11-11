@@ -49,8 +49,3 @@ class GoogleAPI:
             valueInputOption="USER_ENTERED",
             body={'values': data}
         ).execute()
-
-
-# if __name__ == '__main__':
-#     a = GoogleAPI()
-#     a.create_()

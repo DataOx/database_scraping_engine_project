@@ -34,10 +34,3 @@ class Parser:
             num_of_day = re.search(r"(\d+)\sdays\sago", time_ago).group(1)
             date_ = self.current_date - timedelta(days=int(num_of_day) + 1)
         return date_
-
-
-# if __name__ == "__main__":
-#     scraper = Scraper(URL)
-#     parser = Parser()
-#     data_list = parser.get_cleaned_data(scraper.current_data)
-#     print(data_list)

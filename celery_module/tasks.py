@@ -1,4 +1,5 @@
 import logging
+from datetime import datetime
 from time import sleep
 
 from celery.schedules import crontab
@@ -15,7 +16,7 @@ manager = Manager()
 
 @app.task(name="update_base")
 def update_base():
-    logger.info("UPDATE STARTED ...")
+    logger.info(f"{datetime.now(CURRENT_TIME_ZONE).strftime('%Y-%m-%d %H:%M:%S')}: UPDATE STARTED ...")
     for attempt in range(3):
         try:
             manager.launch()
