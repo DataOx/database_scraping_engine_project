@@ -22,7 +22,7 @@ class Parser:
                 "date": self.date_correction(person['time_ago'])
             }
             cleaned_data.append(dictionary)
-        return cleaned_data
+        return self.correction_double_name(cleaned_data)
 
     def date_correction(self, time_ago: str) -> datetime.date:
         date_: datetime.date = ''
@@ -34,3 +34,16 @@ class Parser:
             num_of_day = re.search(r"(\d+)\sdays\sago", time_ago).group(1)
             date_ = self.current_date - timedelta(days=int(num_of_day) + 1)
         return date_
+
+    @staticmethod
+    def correction_double_name(data_list: List[dict]) -> List[dict]:
+        cleaned_data = []
+        coefficient = 1
+        for index in range(len(data_list)):
+            if data_list[index] not in data_list[index + 1:]:
+                cleaned_data.append(data_list[index])
+            else:
+                data_list[index]["name"] = data_list[index]["name"] + " " * coefficient
+                cleaned_data.append(data_list[index])
+                coefficient += 1
+        return cleaned_data
