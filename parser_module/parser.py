@@ -38,12 +38,11 @@ class Parser:
     @staticmethod
     def correction_double_name(data_list: List[dict]) -> List[dict]:
         cleaned_data = []
-        coefficient = 1
         for index in range(len(data_list)):
-            if data_list[index] not in data_list[index + 1:]:
+            if data_list[index] not in data_list[index + 1:] and data_list[index] not in cleaned_data:
                 cleaned_data.append(data_list[index])
             else:
-                data_list[index]["name"] = data_list[index]["name"] + " " * coefficient
+                while data_list[index] in cleaned_data:
+                    data_list[index]["name"] = data_list[index]["name"] + " "
                 cleaned_data.append(data_list[index])
-                coefficient += 1
         return cleaned_data
