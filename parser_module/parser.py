@@ -10,7 +10,6 @@ class Parser:
 
     def __init__(self):
         self.current_time_zone = CURRENT_TIME_ZONE
-        self.current_date = datetime.now(self.current_time_zone).date()
 
     def get_cleaned_data(self, data_from_scraper) -> List[dict]:
         cleaned_data = []
@@ -27,12 +26,12 @@ class Parser:
     def date_correction(self, time_ago: str) -> datetime.date:
         date_: datetime.date = ''
         if re.search(r"minute|hour", time_ago):
-            date_ = self.current_date - timedelta(days=1)
+            date_ = datetime.now(self.current_time_zone).date() - timedelta(days=1)
         elif re.search(r"yesterday", time_ago):
-            date_ = self.current_date - timedelta(days=2)
+            date_ = datetime.now(self.current_time_zone).date() - timedelta(days=2)
         elif re.search(r"(\d+)\sdays\sago", time_ago):
             num_of_day = re.search(r"(\d+)\sdays\sago", time_ago).group(1)
-            date_ = self.current_date - timedelta(days=int(num_of_day) + 1)
+            date_ = datetime.now(self.current_time_zone).date() - timedelta(days=int(num_of_day) + 1)
         return date_
 
     @staticmethod

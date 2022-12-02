@@ -7,7 +7,6 @@ LOG_FORMAT = f'[%(name)s/%(funcName)s/] [%(levelname)s]: %(message)s '
 class Logger(logging.Logger):
     def __init__(self, name: str):
         super().__init__(name, level=LOG_LEVEL)
-        # self._set_handlers_console()
         self._set_handlers_file()
 
     def _set_handlers_console(self):

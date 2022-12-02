@@ -32,7 +32,6 @@ app.conf.beat_schedule = {
     'DB_updating': {
         'task': 'update_base',
         'schedule': crontab(minute=1, hour=0)
-        # crontab(minute='*/5')  # crontab(),
     },
 }
 app.conf.timezone = CURRENT_TIME_ZONE
