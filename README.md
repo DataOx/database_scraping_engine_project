@@ -6,4 +6,4 @@ The project has automation for populating GoogleSheets and populating Postgres d
 The automation system is implemented using celery beat.
 The project is deployed on the client server and runs in docker.
 ## Architecture
-![image](https://user-images.githubusercontent.com/119062788/206764517-c15df457-e6af-4c9b-858f-52af3639659e.png)
+![image](https://user-images.githubusercontent.com/119062788/206765417-96785466-0efd-4412-a2fe-692bf22cf6e7.png)
